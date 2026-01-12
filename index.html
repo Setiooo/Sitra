@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SiTra-KIP Mobile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="phone">
+
+  <!-- LOGIN -->
+  <div id="login" class="card">
+    <h2>SiTra-KIP</h2>
+
+    <input
+      type="text"
+      id="nisn"
+      placeholder="NISN"
+    >
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Password"
+    >
+
+    <button onclick="login()">MASUK</button>
+
+    <small class="note">
+      * Simulasi sistem, bukan data asli
+    </small>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="hidden">
+
+    <!-- HEADER -->
+    <div class="card">
+      <b id="namaSiswa">Nama Siswa</b><br>
+      <small id="nisnSiswa">NISN:</small><br>
+      <small id="roleInfo"></small>
+
+      <br><br>
+      <button onclick="logout()" style="background:#6b7280">
+        KELUAR
+      </button>
+    </div>
+
+    <!-- SINKRONISASI -->
+    <div class="card sync">
+      Sinkronisasi Data:<br>
+      <span class="ok">Dapodik ✓</span>
+      <span class="ok">DTKS ✓</span>
+    </div>
+
+    <!-- STATUS & KEPUTUSAN -->
+    <div class="card status-koreksi" id="statusBox">
+      <b id="statusText">STATUS:</b>
+
+      <p id="statusDesc"></p>
+
+      <hr style="margin:14px 0">
+
+      <h4>Keputusan Proses</h4>
+
+      <p id="keputusanText"></p>
+
+      <p id="keputusanDesc" class="note"></p>
+
+      <!-- INPUT ALASAN (KHUSUS VERIFIKATOR) -->
+      <textarea
+        id="alasanInput"
+        placeholder="Masukkan catatan / alasan verifikator..."
+        style="display:none;width:100%;padding:8px;border-radius:8px"
+      ></textarea>
+
+      <br>
+
+      <!-- AKSI VERIFIKATOR -->
+      <button
+        id="btnSetujui"
+        onclick="setDisetujui()"
+        style="display:none"
+      >
+        SETUJUI
+      </button>
+
+      <br><br>
+
+      <button
+        id="btnPerbaikan"
+        onclick="setPerluPerbaikan()"
+        style="display:none;background:#f59e0b"
+      >
+        PERLU PERBAIKAN
+      </button>
+    </div>
+
+    <!-- RIWAYAT PENCAIRAN -->
+    <div class="card riwayat">
+      <h4>Riwayat Pencairan</h4>
+
+      <p id="rekeningInfo"></p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tahun</th>
+            <th>Tahap</th>
+            <th>Tanggal</th>
+            <th>Jumlah</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="riwayatTable"></tbody>
+      </table>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="card">
+      <h4>Timeline Proses</h4>
+      <ul id="timeline"></ul>
+    </div>
+
+    <!-- AUDIT -->
+    <div class="card audit">
+      <h4>Audit Trail</h4>
+      <ul id="auditLog"></ul>
+
+      <button
+        onclick="exportAudit()"
+        style="margin-top:10px;background:#059669"
+      >
+        EXPORT AUDIT
+      </button>
+    </div>
+
+    <!-- DASHBOARD VERIFIKATOR -->
+    <div
+      id="verifikatorPanel"
+      class="card"
+      style="display:none"
+    >
+      <h4>Dashboard Verifikator</h4>
+
+      <table>
+        <thead>
+          <tr>
+            <th>NISN</th>
+            <th>Nama</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="siswaList"></tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
